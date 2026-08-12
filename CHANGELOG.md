@@ -2,6 +2,14 @@
 
 All notable versions of the Genesis website are recorded here.
 
+## [1.0.2] - 2026-08-12
+
+### Changed
+
+- Moved each project image directly beneath its large project title.
+- Restyled project descriptions as plain editorial text without a card border, background, or padding.
+- Kept project facts in a separate right-hand panel with a responsive single-column mobile flow.
+
 ## [1.0.1] - 2026-08-12
 
 ### Changed

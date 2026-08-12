@@ -69,13 +69,15 @@
     const limit = Number(projectGrid.dataset.limit || projects.length);
     const caseStudies = projectGrid.dataset.projectLayout === "case-studies";
     projectGrid.innerHTML = projects.slice(0, limit).map((project, index) => caseStudies ? `<article class="project-case reveal">
-      <div class="project-case__overview">
-        <div class="project-case__story"><p class="eyebrow">Featured ${String(index + 1).padStart(2, "0")} · ${project.type}</p><h2>${project.title}</h2></div>
-        <aside class="project-case__fact-card"><p class="eyebrow">Project facts</p><dl aria-label="${project.title} project facts">${project.facts.map(([label, value]) => `<div><dt>${label}</dt><dd>${value}</dd></div>`).join("")}</dl></aside>
-      </div>
-      <div class="project-case__media-row">
-        <figure class="project-case__image"><img src="${project.image}" srcset="${project.imageSmall} 840w, ${project.image} 1400w" sizes="(max-width: 760px) calc(100vw - 40px), 68vw" alt="${project.alt}" width="1400" height="1050" loading="lazy"></figure>
-        <div class="project-case__description"><p class="eyebrow">Project description</p><p>${project.description}</p><p>${project.productNote}</p></div>
+      <div class="project-case__layout">
+        <div class="project-case__primary">
+          <div class="project-case__story"><p class="eyebrow">Featured ${String(index + 1).padStart(2, "0")} · ${project.type}</p><h2>${project.title}</h2></div>
+          <figure class="project-case__image"><img src="${project.image}" srcset="${project.imageSmall} 840w, ${project.image} 1400w" sizes="(max-width: 760px) calc(100vw - 40px), 68vw" alt="${project.alt}" width="1400" height="1050" loading="lazy"></figure>
+        </div>
+        <div class="project-case__secondary">
+          <aside class="project-case__fact-card"><p class="eyebrow">Project facts</p><dl aria-label="${project.title} project facts">${project.facts.map(([label, value]) => `<div><dt>${label}</dt><dd>${value}</dd></div>`).join("")}</dl></aside>
+          <div class="project-case__description"><p class="eyebrow">Project description</p><p>${project.description}</p><p>${project.productNote}</p></div>
+        </div>
       </div>
     </article>` : `<article class="project-preview reveal">
       <figure class="project-preview__image"><img src="${project.imageSmall}" srcset="${project.imageSmall} 840w, ${project.image} 1400w" sizes="(max-width: 760px) calc(100vw - 40px), 31vw" alt="${project.alt}" width="840" height="630" loading="lazy"></figure>
