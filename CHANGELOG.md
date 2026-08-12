@@ -2,6 +2,14 @@
 
 All notable versions of the Genesis website are recorded here.
 
+## [1.0.3] - 2026-08-12
+
+### Added
+
+- Added an accessible Product dropdown to the primary header navigation.
+- Linked All, Ceilings, Facades, Panel Ceiling, Baffles, Perforated & Mesh, and Curved Panels to their catalog filters.
+- Added hover, click, keyboard, Escape, outside-click, and responsive mobile disclosure behavior.
+
 ## [1.0.2] - 2026-08-12
 
 ### Changed

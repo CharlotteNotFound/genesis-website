@@ -1,5 +1,6 @@
 (function () {
   const iconArrow = '<svg aria-hidden="true" viewBox="0 0 20 20" width="18" height="18"><path d="M4 10h11M11 6l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  const iconChevron = '<svg aria-hidden="true" viewBox="0 0 16 16" width="14" height="14"><path d="m4 6 4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
   function headerMarkup() {
     return `
@@ -15,7 +16,18 @@
           </button>
           <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation">
             <a href="/" data-nav="home">Home</a>
-            <a href="/products/" data-nav="products">Products</a>
+            <div class="nav-dropdown" data-product-dropdown>
+              <button class="nav-dropdown__trigger" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="product-menu" data-nav="products">Product ${iconChevron}</button>
+              <div class="product-menu" id="product-menu" aria-label="Product categories">
+                <a href="/products/">All</a>
+                <a href="/products/?family=Ceiling%20Systems">Ceilings</a>
+                <a href="/products/?family=Facade%20Systems">Facades</a>
+                <a href="/products/?category=Panel%20Ceilings">Panel Ceiling</a>
+                <a href="/products/?category=Open%20%26%20Baffle%20Ceilings">Baffles</a>
+                <a href="/products/?category=Perforated%20%26%20Mesh%20Panels">Perforated &amp; Mesh</a>
+                <a href="/products/?category=Curved%20Aluminum%20Panels">Curved Panels</a>
+              </div>
+            </div>
             <a href="/projects/" data-nav="projects">Projects</a>
             <a href="/about/" data-nav="about">About</a>
             <a href="/contact/" data-nav="contact">Contact</a>
@@ -64,6 +76,55 @@
 
   const toggle = document.querySelector(".nav-toggle");
   const nav = document.querySelector(".primary-nav");
+  const productDropdown = document.querySelector("[data-product-dropdown]");
+  const productTrigger = productDropdown?.querySelector(".nav-dropdown__trigger");
+  const productMenu = productDropdown?.querySelector(".product-menu");
+  const desktopNavigation = window.matchMedia("(min-width: 761px)");
+
+  function setProductMenu(open, focusFirst = false) {
+    if (!productDropdown || !productTrigger) return;
+    productDropdown.classList.toggle("is-open", open);
+    productTrigger.setAttribute("aria-expanded", String(open));
+    if (open && focusFirst) productMenu?.querySelector("a")?.focus();
+  }
+
+  if (productDropdown && productTrigger) {
+    productTrigger.addEventListener("click", () => {
+      setProductMenu(productTrigger.getAttribute("aria-expanded") !== "true");
+    });
+    productTrigger.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowDown") {
+        event.preventDefault();
+        setProductMenu(true, true);
+      }
+    });
+    productDropdown.addEventListener("mouseenter", () => {
+      if (desktopNavigation.matches) setProductMenu(true);
+    });
+    productDropdown.addEventListener("mouseleave", () => {
+      if (desktopNavigation.matches) setProductMenu(false);
+    });
+    productDropdown.addEventListener("focusin", () => {
+      if (desktopNavigation.matches) setProductMenu(true);
+    });
+    productDropdown.addEventListener("focusout", () => {
+      window.requestAnimationFrame(() => {
+        if (desktopNavigation.matches && !productDropdown.contains(document.activeElement)) setProductMenu(false);
+      });
+    });
+    productDropdown.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setProductMenu(false);
+        productTrigger.focus();
+      }
+    });
+    document.addEventListener("click", (event) => {
+      if (!productDropdown.contains(event.target)) setProductMenu(false);
+    });
+    desktopNavigation.addEventListener("change", () => setProductMenu(false));
+  }
+
   if (toggle && nav) {
     toggle.addEventListener("click", () => {
       const expanded = toggle.getAttribute("aria-expanded") === "true";
@@ -72,6 +133,7 @@
       if (label) label.textContent = expanded ? "Open navigation" : "Close navigation";
       nav.classList.toggle("is-open", !expanded);
       document.body.classList.toggle("nav-open", !expanded);
+      if (expanded) setProductMenu(false);
     });
     nav.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => {
       toggle.setAttribute("aria-expanded", "false");
@@ -79,6 +141,7 @@
       if (label) label.textContent = "Open navigation";
       nav.classList.remove("is-open");
       document.body.classList.remove("nav-open");
+      setProductMenu(false);
     }));
   }
 
