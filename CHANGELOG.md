@@ -2,6 +2,14 @@
 
 All notable versions of the Genesis website are recorded here.
 
+## [1.0.1] - 2026-08-12
+
+### Changed
+
+- Reworked all three project case studies into a four-zone editorial grid.
+- Positioned the large project image beneath the project title and the narrative beneath the facts card.
+- Preserved a responsive stacked reading order on small screens.
+
 ## [1.0.0] - 2026-08-12
 
 ### Added
