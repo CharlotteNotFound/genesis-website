@@ -5,16 +5,16 @@
 
   function productCard(product) {
     return `<article class="product-card reveal" data-family="${product.family}" data-category="${product.category}" data-name="${product.name.toLowerCase()}">
-      <a class="product-card__image" href="/products/${product.slug}/" aria-label="View ${product.name}">
-        <img src="/assets/images/products/${product.slug}.webp" alt="${product.name} product and installed application" width="600" height="380" loading="lazy">
-        <span>${product.id}</span>
+      <a class="product-card__link" href="/products/${product.slug}/" aria-label="View ${product.name} details">
+        <figure class="product-card__image">
+          <img src="/assets/images/product-cards/${product.slug}.webp" alt="${product.name}" width="1000" height="750" loading="lazy">
+          <span>${product.id}</span>
+        </figure>
+        <div class="product-card__body">
+          <p class="product-card__category">${product.category}</p>
+          <h3>${product.name}</h3>
+        </div>
       </a>
-      <div class="product-card__body">
-        <p class="eyebrow">${product.category}</p>
-        <h3><a href="/products/${product.slug}/">${product.name}</a></h3>
-        <p>${product.summary}</p>
-        <a class="text-link" href="/products/${product.slug}/">Technical details ${arrow}</a>
-      </div>
     </article>`;
   }
 

@@ -2,6 +2,14 @@
 
 All notable versions of the Genesis website are recorded here.
 
+## [1.0.4] - 2026-08-12
+
+### Changed
+
+- Replaced all product-card thumbnails with matched imagery from the legacy website asset folder.
+- Simplified product cards to show only the product number, blue category name, and black product name.
+- Preserved each source image without distortion using optimized WebP assets in a consistent 4:3 frame.
+
 ## [1.0.3] - 2026-08-12
 
 ### Added
