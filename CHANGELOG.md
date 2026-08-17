@@ -2,6 +2,13 @@
 
 All notable versions of the Genesis website are recorded here.
 
+## [1.0.8] - 2026-08-17
+
+### Changed
+
+- Replaced the homepage capability split-banner image with engineering case image 33.
+- Preserved the existing split-banner layout and responsive styling.
+
 ## [1.0.7] - 2026-08-17
 
 ### Changed
