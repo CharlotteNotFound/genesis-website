@@ -2,6 +2,12 @@
 
 All notable versions of the Genesis website are recorded here.
 
+## [1.0.7] - 2026-08-17
+
+### Changed
+
+- Increased the Modular precision image focal position from 64% to 80%.
+
 ## [1.0.6] - 2026-08-17
 
 ### Changed
