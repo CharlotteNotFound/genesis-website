@@ -2,6 +2,13 @@
 
 All notable versions of the Genesis website are recorded here.
 
+## [1.0.6] - 2026-08-17
+
+### Changed
+
+- Shifted the Modular precision image focal point upward to reveal more of its warm yellow section.
+- Kept the category-card size, grid placement, overlay, and content layout unchanged.
+
 ## [1.0.5] - 2026-08-17
 
 ### Changed
