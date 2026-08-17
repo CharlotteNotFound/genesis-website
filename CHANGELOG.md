@@ -2,6 +2,15 @@
 
 All notable versions of the Genesis website are recorded here.
 
+## [1.0.5] - 2026-08-17
+
+### Changed
+
+- Replaced the Modular precision category image with engineering case image 28.
+- Replaced the Light, air, pattern category image with engineering case image 5.
+- Replaced the Complex geometry category image with engineering case image 12.
+- Preserved the existing homepage category-card layout and responsive styling.
+
 ## [1.0.4] - 2026-08-12
 
 ### Changed
